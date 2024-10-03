@@ -1,0 +1,289 @@
+/* create packages code start here */
+.CreatePackagesHead {
+  /* padding: 10px 0; */
+  padding-top: 20px;
+}
+.mainPackage {
+  padding: 70px 30px;
+}
+.BasicPackage {
+  margin-top: 20px;
+  background: var(--red);
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.BasicPackage h6 {
+  font-size: 14px;
+  color: #fff;
+}
+.BasicPackagesInner {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#destination,
+.packageInput input {
+  font-size: 16px !important;
+  /* height: 25px; */
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin: 3px 0;
+}
+
+.BasicPackagesInner label {
+  font-size: 14px !important;
+  padding: 5px 0;
+}
+.itinerary {
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+}
+.BasicPackagesInnerBox {
+  display: flex;
+  width: 33%;
+}
+
+.packageInput {
+  width: 33%;
+  margin: 0;
+  margin: 5px 0;
+}
+.packageInput input {
+  width: 100%;
+  margin: 5px 0;
+  /* padding: 10px; */
+  /* margin-top: 7px; */
+}
+.packageInputInclusions {
+  width: 100%;
+  margin: 10px 0;
+}
+.packageInputInclusions input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 7px;
+  border: none;
+  border-radius: 5px;
+}
+.packageInput label {
+  font-weight: 600;
+}
+.packageInputInclusions label {
+  font-weight: 600;
+  padding: 5px 0;
+  font-size: 14px !important;
+}
+.destination-dropdown label {
+  font-weight: 600 !important;
+  padding: 5px 0;
+  font-size: 14px !important;
+}
+.packageInput input::placeholder {
+  font-size: 13px !important;
+}
+
+.generateBtn {
+  margin-top: 10px;
+  background: #db272e;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+#checkboxForm label {
+  font-size: 14px;
+}
+
+#checkboxForm {
+  margin-bottom: 20px !important;
+}
+
+@media screen and (max-width: 738px) {
+  .packageInput label {
+    font-size: 11px;
+  }
+  .packageInputInclusions label {
+    font-size: 11px;
+  }
+  .destination-dropdown label {
+    font-size: 11px !important;
+  }
+  .destination-select {
+    font-size: 11px !important;
+  }
+  .BasicPackagesInnerBox {
+    width: 100% !important;
+    display: block;
+  }
+  .BasicPackagesInner {
+    display: block;
+  }
+  .packageInput {
+    width: 100% !important;
+  }
+}
+
+/* Style for the dropdown container */
+.destination-dropdown {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  /* max-width: 300px; */
+  width: 100%;
+}
+
+/* Style for the dropdown label */
+.destination-dropdown label {
+  /* margin-bottom: 8px; */
+  font-size: 16px;
+}
+
+/* Style for the dropdown select */
+.destination-select {
+  /* padding: 10px; */
+  font-size: 16px;
+  border: 1px solid #111;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23999' d='M2 0L0 2h4zM2 5L0 3h4z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 10px 10px;
+}
+
+@media screen and (max-width: 1280px) {
+  .BasicPackagesInnerBox {
+    display: flex;
+    width: 33%;
+    margin-top: 3px !important;
+  }
+}
+/* create packages code end here */
+
+/* package description start */
+.packageDescription {
+  margin: 0 auto;
+  width: 100%;
+}
+.packageDescription h4 {
+  padding: 10px 0;
+  font-size: 14px;
+}
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+textarea.form-control {
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-body textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+}
+
+.source-code-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.source-code-btn:hover {
+  background-color: #138496;
+}
+
+/* package description end */

@@ -1,25 +1,40 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
+import config from '../../config';
 
 const SinglePackage = () => {
+  const location = useLocation(); // Unix timestamp in milliseconds
+  const option = location.state?.option;
+
+  const date = new Date(option.metadata.createdAt); // Convert timestamp to Date object
+
+  console.log(option.itineraryIdList[1])
+
+  // useEffect(()=>{
+  //   axios.get(`${config.baseUrl}/itinerary/getById/${id}`)
+  // })
+
+
+
   return (
-    <div class="customerProfileMain">
+    <div class="customerProfileMain" style={{ marginLeft: "100px", width: "100%" }}>
       <div class="customerProfileHeading">
         <div class="cutomerProfileHeadingOne">
-          <p>Customer Name : Mr. Gaurav Kr Gupta</p>
-          <p>Owner Name : Gaurav Gupta</p>
-          <p>Last Remark : </p>
+          <p>Package Name : {option.name}</p>
+          <p>Destination: {option.destination.destinationName}</p>
         </div>
         <div class="cutomerProfileHeadingOne">
-          <p>Contact No : 8899008899</p>
-          <p>CustomerType: B2C</p>
-        </div>
-
-        <div class="cutomerProfileHeadingOne">
-          <p>Email ID : abc@gmail.com</p>
+          <p>Package Code : {option.code}</p>
+          <p>Created By: {option.metadata.createdBy}</p>
         </div>
 
         <div class="cutomerProfileHeadingOne">
-          <p>Active Since : 02-Aug-17 05:26:00</p>
+          <p>Days/Nights : {option.duration.days}/{option.duration.nights}</p>
+        </div>
+
+        <div class="cutomerProfileHeadingOne">
+          <p>Created At: {date.toLocaleString()}</p>
         </div>
       </div>
       <div class="customerProfileHeading">
@@ -34,7 +49,7 @@ const SinglePackage = () => {
       </div>
 
 
-      <div class="customerProfileFirst">
+      {/* <div class="customerProfileFirst">
         <button>Profile</button>
         <button>Queries <span>236</span></button>
         <button>Bookings / Accounts</button>
@@ -43,14 +58,14 @@ const SinglePackage = () => {
         <button>Contacts</button>
         <button>Feedback</button>
         <button>Remarks</button>
-      </div>
+      </div> */}
 
       <div class="customerProfileSecond">
         <div class="customerProfileSecondOne">
           <p>Payments: </p>
-          <p>Total Billed: 405,895.66</p>
-          <p>Total Paid: 105,020.00</p>
-          <p>Pending: 300,875.66 </p>
+          <p>Package Price: {option.packagePrice.price}</p>
+          <p>GST: {option.packagePrice.gst}</p>
+          <p>Total Price: {option.packagePrice.total_price}</p>
         </div>
         <div class="customerProfileSecondTwo">
           <button>View</button>

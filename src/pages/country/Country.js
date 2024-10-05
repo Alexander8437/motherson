@@ -3,7 +3,7 @@ import axios from 'axios';
 import config from '../../config.js';
 
 
-const Country = ({ sendClose }) => {
+const Country = ({ sendClose, fetchData }) => {
   const [countryName, setCountryName] = useState();
   const [code, setCode] = useState();
   const [selectedFiles, setSelectedFiles] = useState(null);
@@ -44,7 +44,6 @@ const Country = ({ sendClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     const formDatasend = new FormData();
     formDatasend.append('countryName', formData.countryName)
     formDatasend.append('code', formData.code)
@@ -52,22 +51,22 @@ const Country = ({ sendClose }) => {
     formDatasend.append('status', formData.status)
     formDatasend.append('image', formData.image)
 
-    console.log(formData)
+    if (formData.countryName && formData.code) {
 
-    await axios.post(`${config.baseUrl}/country/createcountry`, formDatasend,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Access-Control-Allow-Origin': '*'
-
+      await axios.post(`${config.baseUrl}/country/createcountry`, formDatasend,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Access-Control-Allow-Origin': '*'
+          }
         }
-      }
-
-    )
-      .then(async (response) => console.log(response.data))
-      .catch(error => console.log(error));
-
-    // window.location.reload(true)
+      )
+        .then(async (response) => fetchData())
+        .catch(error => console.log(error));
+    }
+    else {
+      alert("enter data")
+    }
   };
 
   useEffect(() => {

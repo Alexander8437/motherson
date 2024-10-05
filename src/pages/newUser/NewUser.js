@@ -63,7 +63,12 @@ const NewUser = ({ sendClose }) => {
   }, [])
 
   useEffect(() => {
-    axios.get(`${config.baseUrl}/rolesPermission`
+    axios.get(`${config.baseUrl}/rolesPermission`,
+      {
+        headers: {
+          "content-type": "text/html"
+        }
+      }
     )
       .then(response => {
         const formattedOptions = response.data.map(item => ({
@@ -88,7 +93,6 @@ const NewUser = ({ sendClose }) => {
       role: [selectedOption.label]
     }
 
-    console.log(postData)
     await axios.post(`${config.baseUrl}/signup`, postData, {
       headers: {
         'Authorization': `Bearer ${tokens}`,

@@ -49,13 +49,13 @@ const BookingDashboardTab = () => {
         <div class="vbox-search">
           <input type="text" placeholder="Search" />
         </div>
-        <div class="filterTask">
+        <div class="filterTask" style={{ marginTop: "-24px" }}>
           <button><img src={filter} /></button>
           {/* <div class="filterTask-content">
           <a href="#">+ New Filter</a>
         </div> */}
         </div>
-        <div class="plusTaskDropdown">
+        <div class="plusTaskDropdown" style={{ marginTop: "-10px" }}>
           <button>+</button>
           <div class="plusTaskDropdown-content">
             <a href="#">Name</a>

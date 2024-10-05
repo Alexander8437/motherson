@@ -25,7 +25,7 @@ const Navbar = () => {
     localStorage.setItem('encryptionKey', null);
     localStorage.setItem('iv', null);
     localStorage.setItem('encryptedToken', null);
-    navigate("/home")
+    navigate("/login")
   }
 
   async function decryptToken(encryptedToken, key, iv) {

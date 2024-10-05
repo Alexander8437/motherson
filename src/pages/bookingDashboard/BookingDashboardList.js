@@ -47,6 +47,7 @@ const BookingDashboardList = () => {
                 <th>Package Name</th>
                 <th>Booking By User</th>
                 <th>Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>

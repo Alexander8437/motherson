@@ -88,6 +88,7 @@ const State = ({ sendClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     console.log(countryId)
     const formDataToSend = new FormData();
     formDataToSend.append('stateName', formData.stateName);
@@ -96,19 +97,28 @@ const State = ({ sendClose }) => {
     formDataToSend.append('ipAddress', formData.ipAddress);
     formDataToSend.append('country', countryId);
     formDataToSend.append('image', formData.image); // Attach image file
-    console.log(formDataToSend)
 
 
-    await axios.post(`${config.baseUrl}/state/createstate`, formDataToSend,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+    if (formData.stateName && formData.code && formData.image) {
+
+      await axios.post(`${config.baseUrl}/state/createstate`, formDataToSend,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then((response) => alert('State saved Successfully.'))
+        .catch(error => console.error(error));
+
+      setFormData({
+        stateName, code, ipAddress: "", status, country,
+        image: null
       })
-      .then((response) => console.log('State saved Successfully.'))
-      .catch(error => console.error(error));
 
-    // navigate("/home")
+    }
+    else {
+      alert('enter data')
+    }
   }
 
 
@@ -143,6 +153,7 @@ const State = ({ sendClose }) => {
               name="stateName"
               value={formData.stateName}
               onChange={handleInputChange}
+              required
             />
           </div >
 

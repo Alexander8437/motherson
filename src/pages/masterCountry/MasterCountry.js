@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react'
 import MasterTab from '../../components/masterTab/MasterTab'
 import axios from 'axios';
 import config from '../../config';
+import Country from '../country/Country';
 
 const MasterCountry = () => {
   const [countryDetails, setCountryDetails] = useState([])
 
-  useEffect(() => {
-    axios.get(`${config.baseUrl}/country/get`
-    )
+  const fetchData = async () => {
+    await axios.get(`${config.baseUrl}/country/get`)
       .then(response => {
         setCountryDetails(response.data);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
+  }
+
+  useEffect(() => {
+    fetchData()
   }, []);
 
 
@@ -68,6 +72,8 @@ const MasterCountry = () => {
       < div className="footer" >
         Showing 1 to 1 of 1 rows
       </div >
+
+
     </div >
   )
 }

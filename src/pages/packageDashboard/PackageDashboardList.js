@@ -2,39 +2,45 @@ import React, { useEffect, useState } from 'react'
 import PackageDashboardTab from './PackageDashboardTab'
 import axios from 'axios';
 import config from '../../config';
+import { useNavigate } from 'react-router-dom';
 
 
 
-const Modal = ({ isOpen, onClose, item }) => {
-  if (!isOpen) return null; // Don't render if modal is not open
+// const Modal = ({ isOpen, onClose, item }) => {
+//   if (!isOpen) return null; // Don't render if modal is not open
 
-  return (
-    <div style={styles.modalOverlay}>
-      <div style={styles.modalContent}>
-        <h2>{item.name}</h2>
-        <div dangerouslySetInnerHTML={{ __html: item.htmlContent }} />
-        <button onClick={onClose} style={styles.closeButton}>Close</button>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div style={styles.modalOverlay}>
+//       <div style={styles.modalContent}>
+//         <h2>{item.name}</h2>
+//         <div dangerouslySetInnerHTML={{ __html: item.htmlContent }} />
+//         <button onClick={onClose} style={styles.closeButton}>Close</button>
+//       </div>
+//     </div>
+//   );
+// };
 
 const PackageDashboardList = () => {
   const [packageList, setPackageList] = useState([])
   const [selectedItem, setSelectedItem] = useState(null); // To hold the selected item's details
   const [isModalOpen, setIsModalOpen] = useState(false);  // To control modal visibility
+  const navigate = useNavigate();
 
   // Function to open the modal with item details
-  const handleViewClick = (option) => {
-    setSelectedItem(option);
-    setIsModalOpen(true);
-  };
+  // const handleViewClick = (option) => {
+  //   setSelectedItem(option);
+  //   setIsModalOpen(true);
+  // };
+
+  const handlePackageView = (option) => {
+    navigate(`/home/package/List/${option.id}`, { state: { option } });
+  }
 
   // Function to close the modal
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedItem(null);
-  };
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  //   setSelectedItem(null);
+  // };
 
 
   useEffect(() => {
@@ -85,13 +91,14 @@ const PackageDashboardList = () => {
                   <td>{option.destination.destinationName}</td>
                   <td>{option.packagePrice.price}</td>
                   <td>{option.metadata.createdBy}</td>
-                  <td><button onClick={() => handleViewClick(option)}>View</button></td>
+                  <td><button onClick={() => handlePackageView(option)}>View</button></td>
                   <td></td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <Modal isOpen={isModalOpen} onClose={handleCloseModal} item={selectedItem} />
+
+          {/* <Modal isOpen={isModalOpen} onClose={handleCloseModal} item={selectedItem} /> */}
 
         </div>
       </div>

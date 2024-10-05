@@ -18,6 +18,7 @@ import BookingDashboard from '../../pages/bookingDashboard/BookingDashboard'
 import BookingDashboardList from '../../pages/bookingDashboard/BookingDashboardList'
 import Profile from '../../pages/profile/Profile'
 import BookingView from '../../pages/bookingDashboard/BookingView'
+import SinglePackage from '../../pages/packageDashboard/SinglePackage'
 
 const Hero = () => {
   return (
@@ -29,6 +30,7 @@ const Hero = () => {
           <Route path={'dashboard'} element={<Dashboard />} />
           <Route path={'myteams'} element={<MyTeams />} />
           <Route path={'package'} element={<PackageList />} />
+          <Route path={'package/List/:id'} element={<SinglePackage />} />
           <Route path={'packageDashboard'} element={<PackageDashboard />} />
           <Route path={'packageDashboardList'} element={<PackageDashboardList />} />
           <Route path='myteams/invitation' element={<MyInvitation />} />

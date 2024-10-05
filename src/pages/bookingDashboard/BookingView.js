@@ -7,9 +7,24 @@ const BookingView = ({ }) => {
   const location = useLocation();
   const { id } = useParams(); // Get the id from the URL
   const [item, setItem] = useState(null)
+  const [customer, setCustomer] = useState([])
 
   // Access the passed item from location.state
   const booking = location.state?.booking;
+
+  console.log(booking.cust_Id)
+  useEffect(() => {
+    axios.get(`${config.baseUrl}/customer/getById/${booking.cust_Id}`,
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then(response => {
+        setCustomer(response.data)
+      })
+      .catch(error => console.log(error))
+
+  }, []);
 
 
   useEffect(() => {
@@ -36,17 +51,17 @@ const BookingView = ({ }) => {
     <div class="customerProfileMain" style={{ marginLeft: "100px", width: "100%" }}>
       <div class="customerProfileHeading">
         <div class="cutomerProfileHeadingOne">
-          <p>Customer Name : Mr. Gaurav Kr Gupta</p>
-          <p>User Name : Gaurav Gupta</p>
+          <p>Customer Name : {customer.cust_Name}</p>
+          <p>User Name : {booking.bookingByUserName}</p>
           <p>Last Remark : </p>
         </div>
         <div class="cutomerProfileHeadingOne">
-          <p>Contact No : 8899008899</p>
+          <p>Contact No : {customer.cust_Phone}</p>
           <p>CustomerType: B2C</p>
         </div>
 
         <div class="cutomerProfileHeadingOne">
-          <p>Email ID : abc@gmail.com</p>
+          <p>Email ID : {customer.cust_Email}</p>
         </div>
 
         <div class="cutomerProfileHeadingOne">
@@ -79,9 +94,9 @@ const BookingView = ({ }) => {
       <div class="customerProfileSecond">
         <div class="customerProfileSecondOne">
           <p>Payments: </p>
-          <p>Total Billed: 405,895.66</p>
-          <p>Total Paid: 105,020.00</p>
-          <p>Pending: 300,875.66 </p>
+          <p>Total Billed: {booking.paymentDetails.amount}</p>
+          {/* <p>Total Paid: 105,020.00</p>
+          <p>Pending: 300,875.66 </p> */}
         </div>
         <div class="customerProfileSecondTwo">
           <button>View</button>
